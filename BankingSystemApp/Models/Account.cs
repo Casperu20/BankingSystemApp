@@ -11,13 +11,18 @@ public class Account {
     public DateTime CloseDate { get; set; }
     public decimal Amount { get; set; }
 
-    public Account(string AccountHolder, AccountType Type, AccountCurrency Currency, string IBAN, DateTime OpenDate, DateTime CloseDate, decimal Amount) {
+    public Account(string AccountHolder, AccountType Type, AccountCurrency Currency, string IBAN) {
         this.AccountHolder = AccountHolder;
         this.Type = Type;
         this.Currency = Currency;
         this.IBAN = IBAN;
-        this.OpenDate = OpenDate;
-        this.CloseDate = CloseDate;
-        this.Amount = Amount;
+        this.OpenDate = DateTime.Now;
+        this.CloseDate = new DateTime(2999, 1, 1);;
+        this.Amount = 0;
+    }
+
+    public override string ToString()
+    {
+        return $" ~ Account Data: {AccountHolder} | {IBAN} | {Currency} | {Amount}";
     }
 }
