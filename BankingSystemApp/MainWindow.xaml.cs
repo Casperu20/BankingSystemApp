@@ -21,7 +21,7 @@ public partial class MainWindow : Window
 {
     public MainWindow() {
         InitializeComponent();
-        
+        /*
         var service = new BankService();
         
         var bank1 = new Bank("BCR", "BCRROBU", BankLocation.TM, BankCountry.RO);
@@ -34,5 +34,15 @@ public partial class MainWindow : Window
         
         service.ApplyFee(bank1, 25.50m);
         service.ApplyFee(bank2, 10.00m);
+        */
+
+        var account1 = new Account("Nicu Bunea", AccountType.Personal, AccountCurrency.EUR, "RO49BUN1000000000000000");
+        var account2 = new Account("Melisa Daj", AccountType.Personal, AccountCurrency.EUR, "RO53DAJ2000000000000003");
+        
+        account1.Deposit(1000); // OK
+        account1.TransferTo(account2, 500, fee: 10, BankFee: 10); // OK
+        account2.Withdraw(60); // OK
+        
+        account1.Withdraw(500); // FAIL
     }
 }
