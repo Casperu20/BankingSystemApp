@@ -14,45 +14,33 @@ using BankingSystemApp.Services;
 
 namespace BankingSystemApp;
 
-/// <summary>
-/// Interaction logic for MainWindow.xaml
-/// </summary>
 public partial class MainWindow : Window
 {
     public MainWindow() {
         InitializeComponent();
-        /*
+        
         var service = new BankService();
         
-        var bank1 = new Bank("BCR", "BCRROBU", BankLocation.TM, BankCountry.RO);
-        var bank2 = new Bank("BCR", "BCRDEBU", BankLocation.B, BankCountry.DE);
-        var bank3 = new Bank("BCR", "BCRROCT", BankLocation.CT, BankCountry.RO);
+        var bank1_bcr = new Bank("BCR", "BCRROTM", BankLocation.TM, BankCountry.RO);
+        service.AddBank(bank1_bcr);
         
-        service.AddBank(bank1); // Should work 
-        service.AddBank(bank2); // Should work again
-        service.AddBank(bank3); // Should ERROR -> same name & country
+        var account1 = new Account("Nicu Bunea", AccountType.Personal, AccountCurrency.EUR, "RO49BUN1000000000000000", BankLocation.TM);
+        var account2 = new Account("Melisa Daj", AccountType.Personal, AccountCurrency.EUR, "RO53DAJ2000000000000003", BankLocation.TM);
+        var accountToClose = new Account("Nu exist", AccountType.Company, AccountCurrency.RON, "RO33EXI5550000000000333", BankLocation.B);
         
-        service.ApplyFee(bank1, 25.50m);
-        service.ApplyFee(bank2, 10.00m);
-        */
-
-        var banks = JsonStorageService.LoadBanksInJSON();
-
-        if (banks.Count == 0) {
-            var bank1_bcr = new Bank("BCR", "BCRROTM", BankLocation.TM, BankCountry.RO);
-            var account1 = new Account("Nicu Bunea", AccountType.Personal, AccountCurrency.EUR, "RO49BUN1000000000000000", BankLocation.TM);
-            var account2 = new Account("Melisa Daj", AccountType.Personal, AccountCurrency.EUR, "RO53DAJ2000000000000003", BankLocation.TM);
-            
-            account1.Deposit(1000);
-            account1.TransferTo(account2, 500, fee: 10, BankFee: 10);
-            account2.Withdraw(60); 
-            
-            bank1_bcr.Accounts.Add(account1);
-            bank1_bcr.Accounts.Add(account2);
-            banks.Add(bank1_bcr);
-        }
-
-        foreach (var bank in banks) {
+        service.OpenAccount(bank1_bcr, account1);
+        service.OpenAccount(bank1_bcr, account2);
+        service.OpenAccount(bank1_bcr, accountToClose);
+        
+        account1.Deposit(2200);
+        account1.TransferTo(account2, 500, fee: 10, BankFee: 10);
+        account2.Withdraw(60); 
+        account1.Deposit(50000);
+        
+        // Close:
+        service.CloseAccount(bank1_bcr, "RO33EXI5550000000000333");
+        
+        foreach (var bank in service.Banks) {
             Console.WriteLine($"\n {bank.Name} - ({bank.Country}) -> {bank.Accounts.Count} accounts");
             foreach (var account in bank.Accounts) {
                 Console.WriteLine($"  {account}");
@@ -60,9 +48,25 @@ public partial class MainWindow : Window
         }
         
         // SAVE back to JSON file
-        JsonStorageService.SaveBanksInJSON(banks);
+        service.SaveInJSON();
         
+        // var banks = JsonStorageService.LoadBanksInJSON();
+        // JsonStorageService.SaveBanksInJSON(banks);
         
+        /* FIRST TESTING OF ACCount functions
+        var service = new BankService();
+
+        var bank1 = new Bank("BCR", "BCRROBU", BankLocation.TM, BankCountry.RO);
+        var bank2 = new Bank("BCR", "BCRDEBU", BankLocation.B, BankCountry.DE);
+        var bank3 = new Bank("BCR", "BCRROCT", BankLocation.CT, BankCountry.RO);
+
+        service.AddBank(bank1); // Should work
+        service.AddBank(bank2); // Should work again
+        service.AddBank(bank3); // Should ERROR -> same name & country
+
+        service.ApplyFee(bank1, 25.50m);
+        service.ApplyFee(bank2, 10.00m);
+        */
         
         /*  Antecedent testing for Account operations
         account1.Withdraw(500); // FAIL
