@@ -1,0 +1,31 @@
+[
+  {
+    "Name": "BCR",
+    "SwiftAccount": "BCRROTM",
+    "Location": 0,
+    "Country": 0,
+    "Balance": 0,
+    "Accounts": [
+      {
+        "AccountHolder": "Nicu Bunea",
+        "Type": 0,
+        "Currency": 1,
+        "IBAN": "RO49BUN1000000000000000",
+        "OpenDate": "2025-10-26T16:09:57.6804016+02:00",
+        "CloseDate": "2999-01-01T00:00:00",
+        "Amount": 490,
+        "Location": 0
+      },
+      {
+        "AccountHolder": "Melisa Daj",
+        "Type": 0,
+        "Currency": 1,
+        "IBAN": "RO53DAJ2000000000000003",
+        "OpenDate": "2025-10-26T16:09:57.6836393+02:00",
+        "CloseDate": "2999-01-01T00:00:00",
+        "Amount": 440,
+        "Location": 0
+      }
+    ]
+  }
+]
