@@ -44,5 +44,15 @@ public partial class MainWindow : Window
         account2.Withdraw(60); // OK
         
         account1.Withdraw(500); // FAIL
+        Console.WriteLine(account1);
+        
+        Console.WriteLine("\n");
+        account1.ChangeCurrency(AccountCurrency.USD);
+        Console.WriteLine(account1);
+        account1.ChangeCurrency(AccountCurrency.RON);
+        Console.WriteLine(account1);
+        
+        var available = new List<BankLocation> { BankLocation.TM, BankLocation.B, BankLocation.CT, BankLocation.IS, BankLocation.AR };
+        account1.ChangeLocation(BankLocation.CT, available);
     }
 }
