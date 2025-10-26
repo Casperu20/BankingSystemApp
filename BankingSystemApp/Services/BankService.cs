@@ -160,7 +160,7 @@ public class BankService {
         Console.WriteLine($"Withdrawn {money_amount} {account.Currency} from {account.AccountHolder}'s account ({IBAN}). New balance: {account.Amount} {account.Currency}");
     }
 
-    public void Transfer(string IBAN_sender, string IBAN_receiver, decimal money_amount) {
+    public async Task Transfer(string IBAN_sender, string IBAN_receiver, decimal money_amount) {
         if (money_amount <= 0) {
             Console.WriteLine(" - Transfer amount must be greater than 0 !!!");
             return;
@@ -234,6 +234,22 @@ public class BankService {
         sender_account.TransactionHistory.Add($"Sent {money_amount} {sender_account.Currency} to {receiver_account.AccountHolder} ({receiver_account.IBAN}) on {DateTime.Now}. Fee: {fee}");
 
         receiver_account.TransactionHistory.Add($"Received {money_amount} {sender_account.Currency} from {sender_account.AccountHolder} ({sender_account.IBAN}) on {DateTime.Now}");
+        
+        // random waiting time for transfers
+        Random rand = new Random();
+        int delaySeconds;
+        if (sender_bank == receiver_bank)
+        {
+            delaySeconds = rand.Next(1, 11);
+            Console.WriteLine($"Estimated delay : {delaySeconds} sec");
+        }
+        else {
+            delaySeconds = rand.Next(11, 21);
+            Console.WriteLine($"Estimated delay : {delaySeconds} sec");
+        }
+        Console.WriteLine($"Processing Transfer...");
+        await Task.Delay(delaySeconds * 1000);
+
         
         ApplyFee(sender_bank, fee);
         

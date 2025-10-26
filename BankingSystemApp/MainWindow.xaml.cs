@@ -14,12 +14,17 @@ using BankingSystemApp.Services;
 
 namespace BankingSystemApp;
 
-public partial class MainWindow : Window
-{
-    public MainWindow() {
+public partial class MainWindow : Window {
+    private BankService service;
+    public MainWindow()
+    {
         InitializeComponent();
         
-        var service = new BankService();
+        Loaded += MainWindow_Loaded;
+    }
+    
+    private async void MainWindow_Loaded(object sender, RoutedEventArgs e) {
+        service = new BankService();
         
         var bank1_bcr = new Bank("BCR", "BCRROTM", BankLocation.TM, BankCountry.RO);
         service.AddBank(bank1_bcr);
@@ -41,7 +46,7 @@ public partial class MainWindow : Window
         
         service.Deposit("RO49BUN1000000000000000", 1200);
         service.Withdraw("RO49BUN1000000000000000", 300);
-        service.Transfer("RO49BUN1000000000000000", "RO53DAJ2000000000000003", 500);
+        await service.Transfer("RO49BUN1000000000000000", "RO53DAJ2000000000000003", 500); // ASYNC!
         // Close:
         service.CloseAccount(bank1_bcr, "RO33EXI5550000000000333");
         
