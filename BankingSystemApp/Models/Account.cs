@@ -12,7 +12,7 @@ public class Account {
     public decimal Amount { get; set; }
     public BankLocation Location { get; set; }
 
-    public Account(string AccountHolder, AccountType Type, AccountCurrency Currency, string IBAN) {
+    public Account(string AccountHolder, AccountType Type, AccountCurrency Currency, string IBAN, BankLocation Location) {
         this.AccountHolder = AccountHolder;
         this.Type = Type;
         this.Currency = Currency;
@@ -20,6 +20,7 @@ public class Account {
         this.OpenDate = DateTime.Now;
         this.CloseDate = new DateTime(2999, 1, 1);;
         this.Amount = 0;
+        this.Location = Location;
     }
     
     // Deposit and Witdrahw money

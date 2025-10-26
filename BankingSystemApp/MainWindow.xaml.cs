@@ -36,13 +36,35 @@ public partial class MainWindow : Window
         service.ApplyFee(bank2, 10.00m);
         */
 
-        var account1 = new Account("Nicu Bunea", AccountType.Personal, AccountCurrency.EUR, "RO49BUN1000000000000000");
-        var account2 = new Account("Melisa Daj", AccountType.Personal, AccountCurrency.EUR, "RO53DAJ2000000000000003");
+        var banks = JsonStorageService.LoadBanksInJSON();
+
+        if (banks.Count == 0) {
+            var bank1_bcr = new Bank("BCR", "BCRROTM", BankLocation.TM, BankCountry.RO);
+            var account1 = new Account("Nicu Bunea", AccountType.Personal, AccountCurrency.EUR, "RO49BUN1000000000000000", BankLocation.TM);
+            var account2 = new Account("Melisa Daj", AccountType.Personal, AccountCurrency.EUR, "RO53DAJ2000000000000003", BankLocation.TM);
+            
+            account1.Deposit(1000);
+            account1.TransferTo(account2, 500, fee: 10, BankFee: 10);
+            account2.Withdraw(60); 
+            
+            bank1_bcr.Accounts.Add(account1);
+            bank1_bcr.Accounts.Add(account2);
+            banks.Add(bank1_bcr);
+        }
+
+        foreach (var bank in banks) {
+            Console.WriteLine($"\n {bank.Name} - ({bank.Country}) -> {bank.Accounts.Count} accounts");
+            foreach (var account in bank.Accounts) {
+                Console.WriteLine($"  {account}");
+            }
+        }
         
-        account1.Deposit(1000); // OK
-        account1.TransferTo(account2, 500, fee: 10, BankFee: 10); // OK
-        account2.Withdraw(60); // OK
+        // SAVE back to JSON file
+        JsonStorageService.SaveBanksInJSON(banks);
         
+        
+        
+        /*  Antecedent testing for Account operations
         account1.Withdraw(500); // FAIL
         Console.WriteLine(account1);
         
@@ -53,6 +75,6 @@ public partial class MainWindow : Window
         Console.WriteLine(account1);
         
         var available = new List<BankLocation> { BankLocation.TM, BankLocation.B, BankLocation.CT, BankLocation.IS, BankLocation.AR };
-        account1.ChangeLocation(BankLocation.CT, available);
+        account1.ChangeLocation(BankLocation.CT, available); }*/
     }
 }
