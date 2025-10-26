@@ -11,6 +11,7 @@ public class Account {
     public DateTime CloseDate { get; set; }
     public decimal Amount { get; set; }
     public BankLocation Location { get; set; }
+    public List<string> TransactionHistory { get; set; }
 
     public Account(string AccountHolder, AccountType Type, AccountCurrency Currency, string IBAN, BankLocation Location) {
         this.AccountHolder = AccountHolder;
@@ -21,6 +22,7 @@ public class Account {
         this.CloseDate = new DateTime(2999, 1, 1);;
         this.Amount = 0;
         this.Location = Location;
+        this.TransactionHistory = new List<string>();
     }
     
     // Deposit and Witdrahw money
@@ -32,6 +34,7 @@ public class Account {
         
         Amount += money_amount;
         Console.WriteLine($"Deposited {money_amount} {Currency} to {AccountHolder}'s account. New balance: {Amount} {Currency}");
+        TransactionHistory.Add($"Deposited {money_amount} {Currency} to {AccountHolder}'s account on {DateTime.Now}");
     }
 
     public void Withdraw(decimal money_amount) {
@@ -47,6 +50,7 @@ public class Account {
         
         Amount -= money_amount;
         Console.WriteLine($"Withdrawn {money_amount} {Currency} from {AccountHolder}'s account. New balance: {Amount} {Currency}");
+        TransactionHistory.Add($"Withdrawn {money_amount} {Currency} from {AccountHolder}'s account on {DateTime.Now}");
     }
     
     // transfer to another account

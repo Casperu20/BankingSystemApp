@@ -32,11 +32,16 @@ public partial class MainWindow : Window
         service.OpenAccount(bank1_bcr, account2);
         service.OpenAccount(bank1_bcr, accountToClose);
         
+        /* before Deposit & Withdraw + transfer from BANK services!
         account1.Deposit(2200);
         account1.TransferTo(account2, 500, fee: 10, BankFee: 10);
         account2.Withdraw(60); 
         account1.Deposit(50000);
+        */
         
+        service.Deposit("RO49BUN1000000000000000", 1200);
+        service.Withdraw("RO49BUN1000000000000000", 300);
+        service.Transfer("RO49BUN1000000000000000", "RO53DAJ2000000000000003", 500);
         // Close:
         service.CloseAccount(bank1_bcr, "RO33EXI5550000000000333");
         
@@ -46,6 +51,9 @@ public partial class MainWindow : Window
                 Console.WriteLine($"  {account}");
             }
         }
+        
+        service.ShowTransactionHistory("RO49BUN1000000000000000");
+        service.ShowTransactionHistory("RO53DAJ2000000000000003");
         
         // SAVE back to JSON file
         service.SaveInJSON();

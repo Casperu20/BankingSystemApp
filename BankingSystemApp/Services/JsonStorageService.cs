@@ -19,7 +19,7 @@ public class JsonStorageService
             string json = JsonSerializer.Serialize(banks, options);
 
             File.WriteAllText(FilePath, json);
-            Console.WriteLine("Data saved in banks.json!");
+            // Console.WriteLine("Data saved in banks.json!");
         }
         catch (Exception e) {
             Console.WriteLine($" - ERROR saving data in banks.json: {e.Message} !!!");

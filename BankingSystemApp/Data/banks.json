@@ -4,7 +4,7 @@
     "SwiftAccount": "BCRROTM",
     "Location": 0,
     "Country": 0,
-    "Balance": 0,
+    "Balance": 15.00,
     "Accounts": [
       {
         "AccountHolder": "Nicu Bunea",
@@ -13,8 +13,13 @@
         "IBAN": "RO49BUN1000000000000000",
         "OpenDate": "2025-10-26T17:11:55.8186837+02:00",
         "CloseDate": "2999-01-01T00:00:00",
-        "Amount": 51690,
-        "Location": 0
+        "Amount": 52875.00,
+        "Location": 0,
+        "TransactionHistory": [
+          "Deposited 1200 EUR to Nicu Bunea\u0027s account on 26-Oct-25 9:58:23 PM",
+          "Withdrawn 300 EUR from Nicu Bunea\u0027s account on 26-Oct-25 9:58:23 PM",
+          "Sent 500 EUR to Melisa Daj (RO53DAJ2000000000000003) on 26-Oct-25 9:58:23 PM. Fee: 5.00"
+        ]
       },
       {
         "AccountHolder": "Melisa Daj",
@@ -23,8 +28,11 @@
         "IBAN": "RO53DAJ2000000000000003",
         "OpenDate": "2025-10-26T17:11:55.8220749+02:00",
         "CloseDate": "2999-01-01T00:00:00",
-        "Amount": 440,
-        "Location": 0
+        "Amount": 1940,
+        "Location": 0,
+        "TransactionHistory": [
+          "Received 500 EUR from Nicu Bunea (RO49BUN1000000000000000) on 26-Oct-25 9:58:23 PM"
+        ]
       }
     ]
   }
