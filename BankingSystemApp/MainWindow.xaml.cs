@@ -94,4 +94,19 @@ public partial class MainWindow : Window {
         var available = new List<BankLocation> { BankLocation.TM, BankLocation.B, BankLocation.CT, BankLocation.IS, BankLocation.AR };
         account1.ChangeLocation(BankLocation.CT, available); }*/
     }
+
+    private void AddBank_Click(object sender, RoutedEventArgs e) {
+        MessageBox.Show("Add Bank button clicked!");
+    }
+    private void OpenAccount_Click(object sender, RoutedEventArgs e) { }
+    private void Deposit_Click(object sender, RoutedEventArgs e) {
+        var depositWindow = new DepositWindow(service);
+        depositWindow.Owner = this;
+        depositWindow.ShowDialog();
+    }
+
+    private void Withdraw_Click(object sender, RoutedEventArgs e) { }
+    private void Transfer_Click(object sender, RoutedEventArgs e) { }
+    private void History_Click(object sender, RoutedEventArgs e) { }
+    private void Exit_Click(object sender, RoutedEventArgs e) { }
 }
