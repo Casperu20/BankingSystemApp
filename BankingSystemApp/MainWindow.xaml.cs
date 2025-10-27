@@ -122,6 +122,15 @@ public partial class MainWindow : Window {
         transferWindow.Owner = this;
         transferWindow.ShowDialog();
     }
-    private void History_Click(object sender, RoutedEventArgs e) { }
-    private void Exit_Click(object sender, RoutedEventArgs e) { }
+
+    private void History_Click(object sender, RoutedEventArgs e) {
+        var window = new ViewHistoryWindow(service);
+        window.ShowDialog();
+    }
+
+    private void Exit_Click(object sender, RoutedEventArgs e) {
+        service.SaveInJSON();
+        MessageBox.Show("All data saved successfully.\nGoodbye!", "Saved", MessageBoxButton.OK, MessageBoxImage.Information);
+        Application.Current.Shutdown();
+    }
 }

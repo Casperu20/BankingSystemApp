@@ -168,6 +168,12 @@ public class BankService {
             return false;
         }
         
+        if (IBAN_sender == IBAN_receiver) {
+            Console.WriteLine(" - Transfer FAILED. Sender and receiver IBAN cannot be the same!");
+            return false;
+        }
+
+        
         Account sender_account = GetAccount(IBAN_sender);
         Account receiver_account = GetAccount(IBAN_receiver);
 
