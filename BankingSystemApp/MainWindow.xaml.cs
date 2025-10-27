@@ -12,6 +12,7 @@ using BankingSystemApp.Enums;
 using BankingSystemApp.Models;
 using BankingSystemApp.Services;
 
+
 namespace BankingSystemApp;
 
 public partial class MainWindow : Window {
@@ -105,8 +106,17 @@ public partial class MainWindow : Window {
         depositWindow.ShowDialog();
     }
 
-    private void Withdraw_Click(object sender, RoutedEventArgs e) { }
-    private void Transfer_Click(object sender, RoutedEventArgs e) { }
+    private void Withdraw_Click(object sender, RoutedEventArgs e) {
+        var withdrawWindow = new WithdrawWindow(service);
+        withdrawWindow.Owner = this;
+        withdrawWindow.ShowDialog();
+    }
+
+    private void Transfer_Click(object sender, RoutedEventArgs e) {
+        var transferWindow = new TransferWindow(service);
+        transferWindow.Owner = this;
+        transferWindow.ShowDialog();
+    }
     private void History_Click(object sender, RoutedEventArgs e) { }
     private void Exit_Click(object sender, RoutedEventArgs e) { }
 }

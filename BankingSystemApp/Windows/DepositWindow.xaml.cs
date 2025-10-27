@@ -3,8 +3,7 @@ using BankingSystemApp.Services;
 
 namespace BankingSystemApp;
 
-public partial class DepositWindow : Window
-{
+public partial class DepositWindow : Window {
     private readonly BankService _service;
 
     public DepositWindow(BankService service)
@@ -22,8 +21,12 @@ public partial class DepositWindow : Window
             return;
         }
 
-        _service.Deposit(iban, amount);
-        MessageBox.Show($"Deposited {amount} successfully into account {iban}.");
+        bool succes = _service.Deposit(iban, amount);
+        
+        if(succes)
+            MessageBox.Show($"Deposited {amount} successfully into account {iban}.");
+        else
+            MessageBox.Show(" - Deposit FAILED. IBAN not found or invalid amount!");
         this.Close();
     }
 }

@@ -10,8 +10,14 @@
 
     <ItemGroup>
       <Folder Include="Data\" />
-      <Folder Include="ViewModels\" />
-      <Folder Include="Views\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Page Update="Windows\DepositWindow.xaml">
+        <Generator>MSBuild:Compile</Generator>
+        <XamlRuntime>Wpf</XamlRuntime>
+        <SubType>Designer</SubType>
+      </Page>
     </ItemGroup>
 
 </Project>

@@ -121,49 +121,51 @@ public class BankService {
         Console.WriteLine($"Account: {iban} CLOSED from {bank.Name}");
     }
     
-    public void Deposit(string IBAN, decimal money_amount) {
+    public bool Deposit(string IBAN, decimal money_amount) {
         if (money_amount <= 0) {
             Console.WriteLine(" - Can't deposit negative or zero amount !!!");
-            return;
+            return false;
         }
         
         Account account = GetAccount(IBAN);
         if (account == null) {
             Console.WriteLine($" - Deposit FAILED. Account {IBAN} not found !!!");
-            return;
+            return false;
         }
         
         account.Deposit(money_amount);
         SaveInJSON();
         Console.WriteLine($"Deposited {money_amount} {account.Currency} to {account.AccountHolder}'s account ({IBAN}). New balance: {account.Amount} {account.Currency}");
+        return true;
     }
 
-    public void Withdraw(string IBAN, decimal money_amount) {
+    public bool Withdraw(string IBAN, decimal money_amount) {
         if (money_amount <= 0) {
             Console.WriteLine(" - Can't withdraw negative or zero amount !!!");
-            return;
+            return false;
         }
         
         Account account = GetAccount(IBAN);
         if (account == null) {
             Console.WriteLine($" - Withdraw FAILED. Account {IBAN} not found !!!");
-            return;
+            return false;
         }
 
         if (account.Amount < money_amount) {
             Console.WriteLine($" - Insufficient money in {IBAN} account. Balance: {account.Amount} {account.Currency}");
-            return;
+            return false;
         }
         
         account.Withdraw(money_amount);
         SaveInJSON();
         Console.WriteLine($"Withdrawn {money_amount} {account.Currency} from {account.AccountHolder}'s account ({IBAN}). New balance: {account.Amount} {account.Currency}");
+        return true;
     }
 
-    public async Task Transfer(string IBAN_sender, string IBAN_receiver, decimal money_amount) {
+    public async Task<bool> Transfer(string IBAN_sender, string IBAN_receiver, decimal money_amount) {
         if (money_amount <= 0) {
             Console.WriteLine(" - Transfer amount must be greater than 0 !!!");
-            return;
+            return false;
         }
         
         Account sender_account = GetAccount(IBAN_sender);
@@ -171,7 +173,7 @@ public class BankService {
 
         if (sender_account == null || receiver_account == null) {
             Console.WriteLine($" - Transfer FAILED. Account {IBAN_sender} or {IBAN_receiver} not found !!!");
-            return;
+            return false;
         }
         
         // find bank for them aswell
@@ -187,7 +189,7 @@ public class BankService {
 
         if (sender_bank == null || receiver_bank == null) {
             Console.WriteLine($" - Transfer FAILED. Account {IBAN_sender} or {IBAN_receiver} not found !!!");
-            return;
+            return false;
         }
         
         // i would implement fixed fees
@@ -206,7 +208,7 @@ public class BankService {
         decimal total_amount = money_amount + fee;
         if (sender_account.Amount < total_amount) {
             Console.WriteLine($" - Insufficient money for transfer + fee! Balance: {sender_account.Amount} {sender_account.Currency}");
-            return;
+            return false;
         }
         
         sender_account.Amount = sender_account.Amount - total_amount;
@@ -255,6 +257,7 @@ public class BankService {
         
         SaveInJSON();
         Console.WriteLine($"Transfered {money_amount} {sender_account.Currency} from ({IBAN_sender}) ->  ({IBAN_receiver}). Fee = {fee}");
+        return true;
     }
 
     public void ShowTransactionHistory(string IBAN) {
