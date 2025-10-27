@@ -97,9 +97,14 @@ public partial class MainWindow : Window {
     }
 
     private void AddBank_Click(object sender, RoutedEventArgs e) {
-        MessageBox.Show("Add Bank button clicked!");
+        var addBankWindow = new AddBankWindow(service);
+        addBankWindow.ShowDialog(); 
     }
-    private void OpenAccount_Click(object sender, RoutedEventArgs e) { }
+
+    private void OpenAccount_Click(object sender, RoutedEventArgs e) {
+        var window = new OpenAccountWindow(service);
+        window.ShowDialog();
+    }
     private void Deposit_Click(object sender, RoutedEventArgs e) {
         var depositWindow = new DepositWindow(service);
         depositWindow.Owner = this;

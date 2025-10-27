@@ -4,7 +4,7 @@
     "SwiftAccount": "BCRROTM",
     "Location": 0,
     "Country": 0,
-    "Balance": 70.00,
+    "Balance": 95.00,
     "Accounts": [
       {
         "AccountHolder": "Nicu Bunea",
@@ -13,7 +13,7 @@
         "IBAN": "RO49BUN1000000000000000",
         "OpenDate": "2025-10-26T17:11:55.8186837+02:00",
         "CloseDate": "2999-01-01T00:00:00",
-        "Amount": 89205.00,
+        "Amount": 91180.00,
         "Location": 0,
         "TransactionHistory": [
           "Deposited 1200 EUR to Nicu Bunea\u0027s account on 26-Oct-25 9:58:23 PM",
@@ -63,7 +63,22 @@
           "Deposited 1200 EUR to Nicu Bunea\u0027s account on 27-Oct-25 5:32:40 PM",
           "Withdrawn 300 EUR from Nicu Bunea\u0027s account on 27-Oct-25 5:32:40 PM",
           "Sent 500 EUR to Melisa Daj (RO53DAJ2000000000000003) on 27-Oct-25 5:32:40 PM. Fee: 5.00",
-          "Sent 1000 EUR to Melisa Daj (RO53DAJ2000000000000003) on 27-Oct-25 5:32:55 PM. Fee: 10.00"
+          "Sent 1000 EUR to Melisa Daj (RO53DAJ2000000000000003) on 27-Oct-25 5:32:55 PM. Fee: 10.00",
+          "Deposited 1200 EUR to Nicu Bunea\u0027s account on 27-Oct-25 5:43:42 PM",
+          "Withdrawn 300 EUR from Nicu Bunea\u0027s account on 27-Oct-25 5:43:42 PM",
+          "Sent 500 EUR to Melisa Daj (RO53DAJ2000000000000003) on 27-Oct-25 5:43:42 PM. Fee: 5.00",
+          "Deposited 1200 EUR to Nicu Bunea\u0027s account on 27-Oct-25 5:47:20 PM",
+          "Withdrawn 300 EUR from Nicu Bunea\u0027s account on 27-Oct-25 5:47:20 PM",
+          "Sent 500 EUR to Melisa Daj (RO53DAJ2000000000000003) on 27-Oct-25 5:47:20 PM. Fee: 5.00",
+          "Deposited 1200 EUR to Nicu Bunea\u0027s account on 27-Oct-25 5:48:52 PM",
+          "Withdrawn 300 EUR from Nicu Bunea\u0027s account on 27-Oct-25 5:48:52 PM",
+          "Sent 500 EUR to Melisa Daj (RO53DAJ2000000000000003) on 27-Oct-25 5:48:52 PM. Fee: 5.00",
+          "Deposited 1200 EUR to Nicu Bunea\u0027s account on 27-Oct-25 5:49:31 PM",
+          "Withdrawn 300 EUR from Nicu Bunea\u0027s account on 27-Oct-25 5:49:31 PM",
+          "Sent 500 EUR to Melisa Daj (RO53DAJ2000000000000003) on 27-Oct-25 5:49:31 PM. Fee: 5.00",
+          "Deposited 1200 EUR to Nicu Bunea\u0027s account on 27-Oct-25 5:59:05 PM",
+          "Withdrawn 300 EUR from Nicu Bunea\u0027s account on 27-Oct-25 5:59:05 PM",
+          "Sent 500 EUR to Melisa Daj (RO53DAJ2000000000000003) on 27-Oct-25 5:59:05 PM. Fee: 5.00"
         ]
       },
       {
@@ -73,7 +88,7 @@
         "IBAN": "RO53DAJ2000000000000003",
         "OpenDate": "2025-10-26T17:11:55.8220749+02:00",
         "CloseDate": "2999-01-01T00:00:00",
-        "Amount": 8940,
+        "Amount": 11440,
         "Location": 0,
         "TransactionHistory": [
           "Received 500 EUR from Nicu Bunea (RO49BUN1000000000000000) on 26-Oct-25 9:58:23 PM",
@@ -89,7 +104,34 @@
           "Received 500 EUR from Nicu Bunea (RO49BUN1000000000000000) on 27-Oct-25 5:19:45 PM",
           "Received 500 EUR from Nicu Bunea (RO49BUN1000000000000000) on 27-Oct-25 5:26:57 PM",
           "Received 500 EUR from Nicu Bunea (RO49BUN1000000000000000) on 27-Oct-25 5:32:40 PM",
-          "Received 1000 EUR from Nicu Bunea (RO49BUN1000000000000000) on 27-Oct-25 5:32:55 PM"
+          "Received 1000 EUR from Nicu Bunea (RO49BUN1000000000000000) on 27-Oct-25 5:32:55 PM",
+          "Received 500 EUR from Nicu Bunea (RO49BUN1000000000000000) on 27-Oct-25 5:43:42 PM",
+          "Received 500 EUR from Nicu Bunea (RO49BUN1000000000000000) on 27-Oct-25 5:47:20 PM",
+          "Received 500 EUR from Nicu Bunea (RO49BUN1000000000000000) on 27-Oct-25 5:48:52 PM",
+          "Received 500 EUR from Nicu Bunea (RO49BUN1000000000000000) on 27-Oct-25 5:49:31 PM",
+          "Received 500 EUR from Nicu Bunea (RO49BUN1000000000000000) on 27-Oct-25 5:59:05 PM"
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "ROMGLIA",
+    "SwiftAccount": "RORLRO22",
+    "Location": 4,
+    "Country": 0,
+    "Balance": 0,
+    "Accounts": [
+      {
+        "AccountHolder": "Testul NUmarul1 OpenACcount",
+        "Type": 1,
+        "Currency": 3,
+        "IBAN": "RO8900000231RXC",
+        "OpenDate": "2025-10-27T17:59:35.5372345+02:00",
+        "CloseDate": "2999-01-01T00:00:00",
+        "Amount": 100000,
+        "Location": 4,
+        "TransactionHistory": [
+          "Deposited 100000 GBP to Testul NUmarul1 OpenACcount\u0027s account on 27-Oct-25 5:59:51 PM"
         ]
       }
     ]
