@@ -43,6 +43,34 @@
     "Location": 0,
     "Country": 3,
     "Balance": 0,
+    "Accounts": [
+      {
+        "AccountHolder": "LOLOL",
+        "Type": 0,
+        "Currency": 0,
+        "IBAN": "RO1231231312JD",
+        "OpenDate": "2025-10-28T22:06:47.7917003+02:00",
+        "CloseDate": "2999-01-01T00:00:00",
+        "Amount": 0,
+        "Location": 0,
+        "TransactionHistory": []
+      }
+    ]
+  },
+  {
+    "Name": "ADSDA",
+    "SwiftAccount": "sre2939123",
+    "Location": 0,
+    "Country": 1,
+    "Balance": 0,
+    "Accounts": []
+  },
+  {
+    "Name": "SWISS",
+    "SwiftAccount": "RO234123121",
+    "Location": 2,
+    "Country": 3,
+    "Balance": 0,
     "Accounts": []
   }
 ]

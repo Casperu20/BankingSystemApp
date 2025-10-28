@@ -23,17 +23,53 @@
             <Button Content="💾 Save &amp; Exit" Click="Exit_Click" Margin="0,20"/>
         </StackPanel>
 
-        <!-- RIGHT PANEL: OUTPUT -->
-        <Grid Grid.Column="1" Background="White" Margin="10">
-            <TextBlock Text="Output / Log:" FontSize="16" FontWeight="Bold"/>
-            <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,30,0,0">
-                <TextBox x:Name="OutputTextBox" 
-                         IsReadOnly="True" 
-                         TextWrapping="Wrap"
-                         VerticalScrollBarVisibility="Auto"
-                         FontFamily="Consolas"
-                         FontSize="13"/>
-            </ScrollViewer>
+        <!-- RIGHT PANEL: CONTENT -->
+        <Grid Grid.Column="1" Background="White" Margin="10" x:Name="RightContent">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />       <!-- For Welcome Text -->
+                <RowDefinition Height="Auto" />    <!-- For Dashboard stats at bottom -->
+            </Grid.RowDefinitions>
+
+            <!-- CENTER WELCOME TEXT -->
+            <StackPanel Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextBlock Text="🏦 Welcome to Banking System App"
+                           FontSize="26"
+                           FontWeight="Bold"
+                           Foreground="#2B579A"
+                           TextAlignment="Center"/>
+                <TextBlock Text="Manage banks, accounts, and transactions easily."
+                           FontSize="14"
+                           Foreground="Gray"
+                           TextAlignment="Center"
+                           Margin="0,10,0,0"/>
+            </StackPanel>
+
+            <!-- DASHBOARD AT BOTTOM -->
+            <Border Grid.Row="1"
+                    Margin="20,40,20,20"
+                    Background="#f2f4f7"
+                    Padding="15"
+                    CornerRadius="10">
+                <StackPanel>
+                    <TextBlock Text="📊 Dashboard Summary"
+                               FontSize="18"
+                               FontWeight="Bold"
+                               Foreground="#2B579A"
+                               Margin="0,0,0,10"/>
+
+                    <TextBlock x:Name="TotalBanksText"
+                               FontSize="15"
+                               Text="🏦 Total Banks: -"
+                               Margin="0,3,0,0"/>
+                    <TextBlock x:Name="TotalAccountsText"
+                               FontSize="15"
+                               Text="👤 Total Accounts: -"
+                               Margin="0,3,0,0"/>
+                </StackPanel>
+            </Border>
+
         </Grid>
+
     </Grid>
 </Window>

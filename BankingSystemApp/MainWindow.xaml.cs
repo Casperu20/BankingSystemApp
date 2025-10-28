@@ -26,6 +26,7 @@ public partial class MainWindow : Window {
     
     private async void MainWindow_Loaded(object sender, RoutedEventArgs e) {
         service = new BankService();
+        UpdateDashboard();
         
         /* TESTING BEFORE THE APP
         var bank1_bcr = new Bank("BCR", "BCRROTM", BankLocation.TM, BankCountry.RO);
@@ -154,5 +155,23 @@ public partial class MainWindow : Window {
 
         Application.Current.Shutdown(); 
     }
+    private void Dashboard_Click(object sender, RoutedEventArgs e)
+    {
+        UpdateDashboard();
+    }
+
+    private void UpdateDashboard()
+    {
+        if (service == null || service.Banks == null)
+            return;
+
+        int totalBanks = service.Banks.Count;
+        int totalAccounts = service.Banks.Sum(b => b.Accounts.Count);   
+
+        TotalBanksText.Text = $"🏦 Total Banks: {totalBanks}";
+        TotalAccountsText.Text = $"👤 Total Accounts: {totalAccounts}";
+    }
+
+
 
 }
