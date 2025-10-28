@@ -27,6 +27,7 @@ public partial class MainWindow : Window {
     private async void MainWindow_Loaded(object sender, RoutedEventArgs e) {
         service = new BankService();
         
+        /* TESTING BEFORE THE APP
         var bank1_bcr = new Bank("BCR", "BCRROTM", BankLocation.TM, BankCountry.RO);
         service.AddBank(bank1_bcr);
         
@@ -45,6 +46,7 @@ public partial class MainWindow : Window {
         account1.Deposit(50000);
         */
         
+        /*
         service.Deposit("RO49BUN1000000000000000", 1200);
         service.Withdraw("RO49BUN1000000000000000", 300);
         await service.Transfer("RO49BUN1000000000000000", "RO53DAJ2000000000000003", 500); // ASYNC!
@@ -63,7 +65,7 @@ public partial class MainWindow : Window {
         
         // SAVE back to JSON file
         service.SaveInJSON();
-        
+        */
         // var banks = JsonStorageService.LoadBanksInJSON();
         // JsonStorageService.SaveBanksInJSON(banks);
         
@@ -129,8 +131,28 @@ public partial class MainWindow : Window {
     }
 
     private void Exit_Click(object sender, RoutedEventArgs e) {
-        service.SaveInJSON();
-        MessageBox.Show("All data saved successfully.\nGoodbye!", "Saved", MessageBoxButton.OK, MessageBoxImage.Information);
-        Application.Current.Shutdown();
+        var result = MessageBox.Show(
+            "Do you want to save all data and exit?",
+            "Save & Exit",
+            MessageBoxButton.YesNo, // keep Yes and No only
+            MessageBoxImage.Question
+        );
+
+        if (result == MessageBoxResult.No)
+            return; // user canceled exit
+
+        try
+        {
+            service.SaveInJSON();
+            MessageBox.Show("✅ Data successfully saved to JSON file.", "Saved", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show($"⚠️ Error while saving data: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            return;
+        }
+
+        Application.Current.Shutdown(); 
     }
+
 }

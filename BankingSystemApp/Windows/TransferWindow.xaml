@@ -1,7 +1,7 @@
 ﻿<Window x:Class="BankingSystemApp.TransferWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="💸 Transfer Money" Height="300" Width="400" WindowStartupLocation="CenterOwner">
+        Title="💸 Transfer Money" Height="200" Width="400" WindowStartupLocation="CenterOwner">
 
     <Grid Margin="15">
         <Grid.RowDefinitions>

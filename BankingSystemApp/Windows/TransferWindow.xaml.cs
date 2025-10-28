@@ -14,20 +14,27 @@ public partial class TransferWindow : Window {
     private async void ConfirmTransfer_Click(object sender, RoutedEventArgs e) {
         string senderIban = SenderBox.Text.Trim();
         string receiverIban = ReceiverBox.Text.Trim();
+        decimal amount;
 
-        if (!decimal.TryParse(AmountBox.Text.Trim(), out decimal amount)) {
-            MessageBox.Show(" - Please enter a valid amount.");
+        if (string.IsNullOrWhiteSpace(senderIban) || string.IsNullOrWhiteSpace(receiverIban)) {
+            MessageBox.Show("Please fill in both sender and receiver IBAN fields.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
             return;
         }
 
-        MessageBox.Show("Processing transfer... This might take a few seconds ⏳");
+        if (!decimal.TryParse(AmountBox.Text.Trim(), out amount) || amount <= 0) {
+            MessageBox.Show("Please enter a valid positive amount.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+            return;
+        }
 
-        bool succes = await _service.Transfer(senderIban, receiverIban, amount);
-        
-        if(succes)
-            MessageBox.Show($"✅ Transfer of {amount} completed (check logs or history).");
+        MessageBox.Show("Processing transfer... This might take a few seconds ⏳", "Processing", MessageBoxButton.OK, MessageBoxImage.Information);
+
+        bool success = await _service.Transfer(senderIban, receiverIban, amount);
+
+        if (success)
+            MessageBox.Show($"✅ Transfer of {amount} completed successfully.\n(Check logs or transaction history.)", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
         else
-            MessageBox.Show(" - Transfer FAILED. Check IBAN, balance or the amount!");
+            MessageBox.Show("❌ Transfer failed. Check IBANs, balance, or transfer amount.", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+
         this.Close();
     }
 }

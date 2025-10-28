@@ -1,7 +1,7 @@
 ﻿<Window x:Class="BankingSystemApp.DepositWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="💰 Deposit Money" Height="250" Width="400" WindowStartupLocation="CenterOwner">
+        Title="💰 Deposit Money" Height="200" Width="400" WindowStartupLocation="CenterOwner">
     
     <Grid Margin="15">
         <Grid.RowDefinitions>

@@ -25,13 +25,14 @@
             <ComboBox x:Name="TypeBox">
                 <ComboBoxItem Content="Personal"/>
                 <ComboBoxItem Content="Company"/>
+                <ComboBoxItem Content="Special"/>
             </ComboBox>
 
             <TextBlock Text="Currency:" Margin="0,10,0,0"/>
             <ComboBox x:Name="CurrencyBox">
                 <ComboBoxItem Content="EUR"/>
                 <ComboBoxItem Content="USD"/>
-                <ComboBoxItem Content="GBP"/>
+                <ComboBoxItem Content="GBP"/>   
                 <ComboBoxItem Content="RON"/>
             </ComboBox>
 
