@@ -44,4 +44,4 @@ Summary of project features:
 ### 💾 Persistent Storage
 - All data is saved in a JSON file (`banks.json`)
 - Automatic saving on close
-- Clean structured models & services### 🏛️ Bank Management
+- Clean structured models & services
