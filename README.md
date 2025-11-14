@@ -1,4 +1,4 @@
-# 🏦 Banking System App (WPF | C# | JSON Storage)****
+# 🏦 Banking System App (WPF | C# | JSON Storage)
 
 A desktop banking management system built using **WPF (.NET)** with  operations for:
   - Banks  
